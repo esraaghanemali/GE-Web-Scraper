@@ -1,0 +1,51 @@
+<template class="task-template">
+  <section id="menus-section" class="section js-section u-category-menu">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-menu"></use></svg>
+          
+        </h1>
+        <h3>try to<code>extract</code>the data by <code>yourself</code> from the first page.</h3>
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="application-menu-demo-toggle" class="js-container-target demo-toggle-button">extract start page
+          <div class="demo-meta u-avoid-clicks">ectract data from the satrt page you choose
+          </div>
+        </button>
+        <div class="demo-box">
+          
+
+          <pre><code data-path="main-process/menus/application-menu.js"></code></pre>
+
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button id="context-menu-demo-toggle" class="js-container-target demo-toggle-button">
+          extract data from the link you want
+          <div class="demo-meta u-avoid-clicks">copy url and paste it, ant determind the selector</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+             <p>enter the url and the selector.</p>
+            <button class="demo-button" id="context-menu">Exract</button>
+          </div>
+         
+          <pre></pre>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require('./renderer-process/menus/context-menu')
+    </script>
+
+  </section>
+</template>

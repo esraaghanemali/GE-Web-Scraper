@@ -1,0 +1,93 @@
+<template class="task-template">
+  <section id="extractors-section" class="section js-section u-category-menu">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-menu"></use></svg>
+          
+        </h1>
+        <h3>try to<code>extract</code>the data by <code>yourself</code> from the page you want.</h3>
+      </div>
+    </header>
+
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button class="js-container-target demo-toggle-button">extract start page
+          <div class="demo-meta u-avoid-clicks">ectract data from the satrt page you choose
+          </div>
+        </button>
+        <div class="demo-box">
+
+           <h5>selector </h5>
+           <div class="demo-controls">
+            
+            <input class="demo-input" id="selectorInputStartUrl" aria-label="enter selector." placeholder="enter selector."></input>
+          </div>
+<p></p>
+
+          <div class="demo-controls">
+            <button class="demo-button" id="extractStartUrl">extract</button>
+          </div>
+ 
+        </div>
+      </div>
+    </div>
+
+<!-- enter the url -->
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button class="js-container-target demo-toggle-button">
+          extract data from the link you want
+          <div class="demo-meta u-avoid-clicks">copy url and paste it, ant determind the selector</div>
+        </button>
+        <div class="demo-box">
+          <h5>url </h5>
+              <div class="demo-controls">
+             
+            <input class="demo-input" id="urlInput" aria-label="enter url." placeholder="enter url."></input>
+          </div>
+  <h5>selector </h5>
+           <div class="demo-controls">
+            
+            <input class="demo-input" id="seletorInputUrl" aria-label="enter url." placeholder="enter selector."></input>
+          </div>
+<p></p>
+          <div class="demo-controls">
+            <button class="demo-button" id="extractUrl">extract</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!-- testing -->
+<!-- enter the url -->
+    <div class="demo">
+      <div class="demo-wrapper">
+        <button class="js-container-target demo-toggle-button">
+          testing
+          <div class="demo-meta u-avoid-clicks">test xml file</div>
+        </button>
+        <div class="demo-box">
+          
+
+          <div class="demo-controls">
+            <button class="demo-button" id="testxmlfile">extract</button>
+            <p id='showdatap'></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+     // abs_path('lib/Utils.js');
+
+      require(global.appRoot+'/extractor/renderer-process/extract-input-url')
+
+      require(global.appRoot+'/extractor/renderer-process/extract-start-url')
+    
+      require(global.appRoot+'/extractor/renderer-process/test')
+  
+     //include('webscraper/extractor/renderer-process/extract_input_url.js');
+    </script>
+  </section>
+</template>

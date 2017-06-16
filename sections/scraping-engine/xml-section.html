@@ -1,0 +1,43 @@
+<template class="task-template">
+    <section id="xml-section" class="section js-section u-category-native-ui">
+        <header class="section-header">
+            <div class="section-wrapper">
+                <h1>
+                    <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-native-ui"></use></svg>
+                   start by loading the xml file
+                </h1>
+                <h3>  saving a file or displaying informational messages.</h3>
+
+                <p>This is a main process because this process is the start to scrape the site u want as it contains the data seletor and navidations.</p>
+
+                <p>Open the <a href="">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p>
+            </div>
+        </header>
+
+
+
+        <div class="demo">
+            <div class="demo-wrapper">
+                <button class="js-container-target demo-toggle-button">choose file
+                    <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux</div>
+                </button>
+                <div class="demo-box">
+                    <div class="demo-controls">
+                        <button class="demo-button" id="selectxmlfile">Load XML file</button>
+                        <span class="demo-response" id="showxmlpath"></span>
+                    </div>
+                    <p>In this demo, the <code>ipc</code> module is used to send a message from the renderer process instructing the main process to launch the open file (or directory) dialog. If a file is selected, the main process can send that information back to the renderer process.</p>
+
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+          require(global.appRoot+'/scraper-engine/renderer-prosess/open-file')
+       //   require('./scraper-engine/renderer-process/error')
+        //  require('./scraper-engine/renderer-process/information')
+        //  require('./scraper-engine/renderer-process/save')
+        </script>
+
+    </section>
+</template>

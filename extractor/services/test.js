@@ -23,12 +23,14 @@ var res = {
       var text = cheerio.load(data)
               for(var i =0 ; i<selectors.length ; i++)
   {
+      var selectedArray = []
  text(selectors[i].element_selector).each( function (j,em)
         {
              
-               extractedData.push(text(this).text())
+               selectedArray.push(text(this).text())
         }
         )
+        extractedData.push({title: selectors[i].title , data: selectedArray})
    }
    cb(extractedData)
 

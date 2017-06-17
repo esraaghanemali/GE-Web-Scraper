@@ -2,20 +2,58 @@ const cheerio = require('cheerio')
 const page = require('./models/fileds')
 
 function getHtmlStartPage () {
+//get url
 
+//get page
 
-  return '<ul id="fruits"><li class="apple">Apple</li><li class="orange">Orange</li> <li class="pear">Pear</li> </ul>'
+//return page
+
+ }
+
+function getSelectors () 
+{
+    var data_element_selectors = global.xmlfile.data
+    return data_element_selectors
 }
 
-function getSelectors () {
-  return '.apple'
-}
+function extractData ()
+ {
 
-function extractData () {
   var page = getHtmlStartPage()
   var selector = getSelectors()
- // var text = cheerio.load('<ul id="fruits"><li class="apple">Apple</li><li class="orange">Orange</li> <li class="pear">Pear</li> </ul>');
   var text = cheerio.load(page)
   return text(selector, '#fruits').text()
 }
+
+var res = {
+
+    extract : function getData ()
+{
+      var selectors = getSelectors() 
+      var page = getHtmlStartPage()
+      var text = cheerio.load(page)
+                    for(var i =0 ; i<selectors.length ; i++)
+  {
+      var selectedArray = []
+ text(selectors[i].element_selector).each( function (j,em)
+        {
+             
+               selectedArray.push(text(this).text())
+        }
+        )
+        extractedData.push({title: selectors[i].title , data: selectedArray})
+   }
+   return extractedData
+ // console.log('fs: '+d)
+}
+
+}
+
+
+module.exports = res 
+
+
+
+module.exports = res 
+
 

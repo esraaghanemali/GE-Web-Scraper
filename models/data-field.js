@@ -38,9 +38,9 @@ class data_item {
 }
 
 var exportdata = {
-  generateData :  function (type, element_selector)
+  generateData :  function (type,title, element_selector)
 {
-return new data_item(type, element_selector);
+return new data_item(type, title,element_selector);
 }
 }
 

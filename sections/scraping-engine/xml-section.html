@@ -6,10 +6,17 @@
                     <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-native-ui"></use></svg>
                    start by loading the xml file
                 </h1>
-                <h3>  saving a file or displaying informational messages.</h3>
+                <h3>load the xml file that contains the start url of site you want to extract data from. the data  and navidations selectors.
+            
+                </h3>
 
-                <p>This is a main process because this process is the start to scrape the site u want as it contains the data seletor and navidations.</p>
-
+                <p>This is the start process of extracting the data because, this processs load the data seletors and navidations.
+                    the data selectors refer to the fields you want the data from.
+                    and navigations are defining the pages to extract data from.
+    
+                </p>
+ <p>just enjoy it.
+                </p>
                 <p>Open the <a href="">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p>
             </div>
         </header>
@@ -19,18 +26,35 @@
         <div class="demo">
             <div class="demo-wrapper">
                 <button class="js-container-target demo-toggle-button">choose file
-                    <div class="demo-meta u-avoid-clicks">Supports: Win, macOS, Linux</div>
+                    <div class="demo-meta u-avoid-clicks">choose xml file from our extintion.</div>
                 </button>
                 <div class="demo-box">
                     <div class="demo-controls">
                         <button class="demo-button" id="selectxmlfile">Load XML file</button>
                         <span class="demo-response" id="showxmlpath"></span>
                     </div>
-                    <p>In this demo, the <code>ipc</code> module is used to send a message from the renderer process instructing the main process to launch the open file (or directory) dialog. If a file is selected, the main process can send that information back to the renderer process.</p>
+                    <p>int the <code>first</code> step just load the xml file u download it from the extention.
+                    you can see the file content and edit it from option below.</p>
 
                 </div>
             </div>
         </div>
+
+            <div class="demo">
+            <div class="demo-wrapper">
+                <button class="js-container-target demo-toggle-button">edit file
+                    <div class="demo-meta u-avoid-clicks">check the content of xml file.</div>
+                </button>
+                <div class="demo-box">
+                    <div class="demo-controls">
+                        <!--<button class="demo-button" id="selectxmlfile">Load XML file</button>
+                        <span class="demo-response" id="showxmlpath"></span>-->
+                    </div>
+                    <p>In this demo, the <code>ipc</code> module is used to send a message from the renderer process instructing the main process to launch the open file (or directory) dialog. If a file is selected, the main process can send that information back to the renderer process.</p>
+                </div>
+            </div>
+        </div>
+
 
         <script type="text/javascript">
           require(global.appRoot+'/scraper-engine/renderer-prosess/open-file')

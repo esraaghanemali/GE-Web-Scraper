@@ -6,14 +6,19 @@ const showdatap = document.getElementById('showdatap')
 
 var table = document.getElementById("testTable");
 
-
+var chooseFile = document.getElementById("htmlPage");
 
 
 
 testxmlfile.addEventListener('click', function () {
 
-  //  console.log('testService '+testService.extract)
-  testService.extract(function (data) {
+if(chooseFile.value=='')
+{
+  chooseFile.placeholder='-_-'
+}
+else
+{
+  testService.extract(chooseFile.value,function (data) {
     var header = table.createTHead();
     var row = header.insertRow(0);
     console.log('data ' + data[0].title)
@@ -40,4 +45,7 @@ testxmlfile.addEventListener('click', function () {
     }
   }
   )
+}
+  //  console.log('testService '+testService.extract)
+
 })

@@ -9,6 +9,11 @@
     var d =require(global.appRoot+'/models/xmlFile');
 
      global.xmlfile = d.generateXmlFile('hhhh','','')
+var storeData = require(global.appRoot + '/models/extractedData')
+var map = {}
+
+ global.finalData = storeData.generateXmlExportFile(map)
+
       
    // console.log('index'+global.appRoot)
   </script>
@@ -41,7 +46,6 @@
       <button type="button" id="button-windows" data-section="xml" class="nav-button">Load <em>data</em> file</button>
     </div>
 
-
    <div class="nav-item u-category-extract">
       <h5 class="nav-category">
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
@@ -50,6 +54,13 @@
       <button type="button" id="button-extractor" data-section="extractors" class="nav-button">extract <em>Xml</em>data</button>
     </div>
 
+       <div class="nav-item u-category-communication">
+      <h5 class="nav-category">
+        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-system"></use></svg>
+        Crawling
+      </h5>
+      <button type="button" id="button-extractor" data-section="crawler" class="nav-button">Crawling <em>Pages </em></button>
+    </div>
     <footer class="nav-footer">
       <button type="button" id="button-about" data-modal="about" class="nav-footer-button">About</button>
       <a class="nav-footer-logo" href="" aria-label="Homepage">
@@ -61,13 +72,12 @@
   <main class="content js-content"></main>
 
     <script>
-    require('./assets/imports')
-    require('./assets/ex-links')
-    require('./assets/nav')
-    require('./assets/demo-btns')
-    require('./assets/code-blocks')
-    require('./assets/normalize-shortcuts')
- 
+    require(global.appRoot+'/assets/imports')
+    require(global.appRoot+'/assets/ex-links')
+    require(global.appRoot+'/assets/nav')
+    require(global.appRoot+'/assets/demo-btns')
+    require(global.appRoot+'/assets/code-blocks')
+    require(global.appRoot+'/assets/normalize-shortcuts')
   </script>
 </body>
 </html>

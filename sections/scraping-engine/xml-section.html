@@ -36,6 +36,11 @@
                     <p>int the <code>first</code> step just load the xml file u download it from the extention.
                     you can see the file content and edit it from option below.</p>
 
+   <div class="demo-controls">
+                        <button class="demo-button" id="startExtract">start Extracting</button>
+                        <span class="demo-response" id="startExtractSpan"></span>
+                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -58,6 +63,7 @@
 
         <script type="text/javascript">
           require(global.appRoot+'/scraper-engine/renderer-prosess/open-file')
+          require(global.appRoot+'/scraper-engine/renderer-prosess/startExtract')
        //   require('./scraper-engine/renderer-process/error')
         //  require('./scraper-engine/renderer-process/information')
         //  require('./scraper-engine/renderer-process/save')

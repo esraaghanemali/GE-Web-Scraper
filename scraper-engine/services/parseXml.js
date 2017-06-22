@@ -5,6 +5,8 @@ var parser = new xml2js.Parser()
 var dataFiled = require(global.appRoot + '/models/data-field')
 var navFiled = require(global.appRoot + '/models/navigation-field')
 var collections = require(global.appRoot + '/models/xmlFile')
+//testing
+var maping = require(global.appRoot + '/scraper-engine/services/map-selec-href')
 
 var parse = {
     parseFile : 
@@ -14,8 +16,8 @@ var data_selectors=[]
 var nav_selectors=[]
     fs.readFile(filePath, function (err, data) { 
               parser.parseString(data, function (err, result) {
-                var  url = result['webscraper']['current_url'][0];
-
+                var  url = result['webscraper']['current_url'];
+                  //console.log("parsexml url "+ url)
                 var data = result['webscraper']['Data'];
                 for (var i=0 ; i< data[0].data.length;i++)
                 {
@@ -30,17 +32,21 @@ var nav_selectors=[]
                  for (var i=0 ; i< nav[0].nav.length;i++)
                 {
                   var nav_element = navFiled.generateNav('category',nav[0].nav[i])
+                   nav_selectors.push(nav_element)
                 }
-                saveData(url,data_selectors,nav_selectors)
                
+                saveData(url,data_selectors,nav_selectors)
+    
             })
               })
+
 }
 }
 
 function  saveData(url,data_selectors,nav_selectors)
 {
 global.xmlfile = collections.generateXmlFile(url,data_selectors,nav_selectors)
+       
 
 }
 

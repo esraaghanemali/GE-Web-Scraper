@@ -33,6 +33,7 @@ var nav_selectors=[]
                 {
                   var nav_element = navFiled.generateNav('category',nav[0].nav[i])
                    nav_selectors.push(nav_element)
+
                 }
                
                 saveData(url,data_selectors,nav_selectors)

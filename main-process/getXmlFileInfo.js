@@ -10,7 +10,7 @@ function getDataSelectors ()
 navigationSelectors :
 function getNavSelectors () 
 {
-    return  global.xmlfile.navigation
+    return  global.xmlfile.navigations
 }
 ,
 url:

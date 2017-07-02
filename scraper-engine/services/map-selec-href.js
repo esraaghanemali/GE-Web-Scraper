@@ -33,17 +33,25 @@ var map = {};
 
 var res = {
 
-  Href: function getHref(page,cb)
+  Href: function getHref(res,cb)
    {
+
+     page = res.body
+
     var selectors = xml.navigationSelectors()
       var text = cheerio.load(page)
         links=[]
+        //console.log("page title : " + res.$("title").text())
+       // console.log(" selectors.length; "+ selectors.length)
       for (var i = 0; i < selectors.length; i++) 
       { 
+       // console.log("nav "+i+" "+ selectors[i].element_selector)
         text(selectors[i].element_selector).each(function (j, em) {
-          //  console.log("text href: "+text(this).text())
+
+          
+          
              var link=   text(this).closest('a').attr('href')
-             //console.log("j: "+j)
+             //  console.log("text href: "+j+" "+link)
             links.push(link)
             
         })

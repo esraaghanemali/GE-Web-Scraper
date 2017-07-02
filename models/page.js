@@ -27,9 +27,9 @@
 }
 
 var exportPage = {
-  generatePage :  function (type, element_selector)
+  generatePage :  function (url, page) 
 {
-return new nav_item(type, element_selector);
+return new page_item(url, page) ;
 }
 }
 

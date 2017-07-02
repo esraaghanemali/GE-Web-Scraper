@@ -54,6 +54,7 @@
     "es6-shim": "^0.35.3",
     "glob": "^7.1.0",
     "highlight.js": "^9.3.0",
+    "xml-writer": "^1.7.0",
     "xml2js": "^0.4.17"
   },
   "standard": {

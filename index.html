@@ -29,6 +29,8 @@ var map = {}
   <link rel="import" href="sections/about.html">
   <link rel="import" href="sections/scraping-engine/xml-section.html">
   <link rel="import" href="sections/extrator/extractor-section.html">
+    <link rel="import" href="sections/exporter/exporter-section.html">
+
 </head>
 <body>
 
@@ -59,8 +61,17 @@ var map = {}
         <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-system"></use></svg>
         Crawling
       </h5>
-      <button type="button" id="button-extractor" data-section="crawler" class="nav-button">Crawling <em>Pages </em></button>
+      <button type="button" id="button-crawling" data-section="crawler" class="nav-button">Crawling <em>Pages </em></button>
     </div>
+
+         <div class="nav-item u-category-communication">
+      <h5 class="nav-category">
+        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-system"></use></svg>
+        Exporting
+      </h5>
+      <button type="button" id="button-exporting" data-section="exporter" class="nav-button">export <em>data </em></button>
+    </div>
+
     <footer class="nav-footer">
       <button type="button" id="button-about" data-modal="about" class="nav-footer-button">About</button>
       <a class="nav-footer-logo" href="" aria-label="Homepage">
@@ -78,6 +89,8 @@ var map = {}
     require(global.appRoot+'/assets/demo-btns')
     require(global.appRoot+'/assets/code-blocks')
     require(global.appRoot+'/assets/normalize-shortcuts')
+    // var xml = require(global.appRoot+'/exporter/services/xml')
+    // xml.buildXml()
   </script>
 </body>
 </html>

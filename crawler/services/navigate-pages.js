@@ -15,6 +15,7 @@ var navResult =
             //define crawler
             var c = new Crawler({
                 maxConnections: 10, callback: function (error, res, done) {
+                    
                     if (error) {
                         cb({ code: 0, msg: 'error in crawler in the file ' + __dirname + ' the error : ' + error })
                     } else {
@@ -84,7 +85,7 @@ var navResult =
                                         // links[i].visited = true;
                                     }
                                 }
-                                var finish =true
+                                global.finish =true
                                   for (var i = 0; i < links.length; i++) {
                                     if (links[i].visited == false) {
                                         //   console.log("enque "+links[i].visited)

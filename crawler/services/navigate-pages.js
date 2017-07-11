@@ -1,99 +1,88 @@
 var urlsService = require(global.appRoot + '/scraper-engine/services/map-selec-href')
-//var linkService = require(global.appRoot + '/models/links')
+  win = require(global.appRoot + '/crawler/services/browser-window')
 
 var links = []
 
-var Crawler = require("crawler");
+global.getPage
+var Crawler = require("crawler")
 
 var navResult =
     {
         navigatePages: function getPages(navUrls, cb) {
-            var link = { url: navUrls, visited: true }
-            links.push(link)
+          //  var link = {url : navUrls , visite }
+
             console.log("crawler service begin")
+            //define crawler
             var c = new Crawler({
                 maxConnections: 10, callback: function (error, res, done) {
                     if (error) {
-                        console.log(error);
+                        cb({ code: 0, msg: 'error in crawler in the file '+__dirname+' the error : ' +error })   
                     } else {
-                     // console.log("page title : " + res.$("title").text())
+                        if (res.statusCode != 200) {
+                            console.log("not 200 ")
+                            cb({ code: 0, msg: 'error the page status code of the page + '+res.request.uri.href+' is not 200! it is'+res.statusCode })
+                        }
 
-                        urlsService.Href(res, function (hrefArray) {
-                           // console.log("hrefArray.length : " + hrefArray.length)
+                        else {
+                            global.curPage = res
 
-                            for (var i = 0; i < hrefArray.length; i++) {
-                              //  console.log("hrefArray["+i+"]: "+hrefArray[i] )
+                               //win.window(res.request.uri.href)       
+                            var exist = false
+                            var index = -1
+                            for (var j = 0; j < links.length; j++) {
+                                if (links[j].url == res.request.uri.href) {
+                                   
+                                    exist = true
+                                    index = j
+                                    break
+                                }
+                            }
+                            if (exist == false) {
+                                var link = { url: res.request.uri.href, visited: true }
+                                links.push(link)
 
-                                var found = false;
-                             // console.log("links.length "+links.length)
-                                for (var j = 0; j < links.length; j++) {
-                                    //console.log("links["+j+"] "+links[j].url)
-                                    if (links[j].url == hrefArray[i]) {
-                                     // console.log("found")
+                            }
+                            else {
+                                links[index].visited = true
+                            }
+                            // get all href of nav selectors in the current page
+                            urlsService.Href(res, function (hrefArray) {
 
-                                        found = true;
-                                        break;
+                                // check if visite the link and add it to the links
+                                for (var i = 0; i < hrefArray.length; i++) {
+                                    var found = false;
+                                    for (var j = 0; j < links.length; j++) {
+                                        if (links[j].url == hrefArray[i]) {
+
+                                            found = true;
+                                            break;
+                                        }
+                                    }
+                                    if (found == false) {
+                                   
+                                        links.push({ url: hrefArray[i], visited: false })
                                     }
                                 }
-                                if (found == false) {
-                                   // console.log("pushed: " + hrefArray[i])
-                                    links.push({ url: hrefArray[i], visited: false })
+ //console.log("links.leng "+links.length)
+                                for (var i = 0; i < links.length; i++) {
+                                    if (links[i].visited == false) {
+                                     //   console.log("enque "+links[i].visited)
+                                        c.queue(links[i].url);
+                                        // links[i].visited = true;
+                                    }
                                 }
-                            }
-                            for (var i = 0; i < links.length; i++) {
-                                if (links[i].visited == false) {
-                                    console.log("enque: " + links[i].url)
-                                    c.queue(links[i].url);
-                                    links[i].visited = true;
-                                }
-                            }
-                        })
-                        cb(res)
+                            })
+                            cb({ code: 1, msg: res })
+                            
+                        }
                     }
                     done();
+
                 }
             });
 
             c.queue(navUrls);
-
-            //            c.queue([{
-            //     uri: navUrls,
-            //     jQuery: false,
-
-            //     // The global callback won't be called
-            //     callback: function (error, res, done) {
-            //         if(error){
-            //             console.log(error);
-            //         }else{
-            //             console.log('Grabbed', res.body.length, 'bytes');
-            //         }
-            //         done();
-            //     }
-            // }]);
         }
     }
-
-function checkLinks(hrefArray) {
-    for (var i = 0; i < hrefArray.length; i++) {
-        console.log("links: " + hrefArray[i])
-
-        var found = false;
-        for (var j = 0; j < links.length; j++) {
-            if (links[j].url == hrefArray[i]) {
-                found = true;
-                break;
-            }
-        }
-        if (found == false) {
-            links.push({ url: hrefArray[i], visited: false })
-        }
-    }
-    for (var i = 0; i < links.length; i++) {
-        if (links[i].visited == false) {
-            //  c.queue(links[i].url);
-            // links[i].visited=true;
-        }
-    }
-}
 
 module.exports = navResult

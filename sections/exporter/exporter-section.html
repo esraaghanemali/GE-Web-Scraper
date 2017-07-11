@@ -1,3 +1,4 @@
+
 <template class="task-template">
   <section id="exporter-section" class="section js-section u-category-communication">
     <header class="section-header">
@@ -8,37 +9,67 @@
           </svg>
 
         </h1>
-        <h3>export the data<code>extracted</code>from the site.</h3>
+        <h3>Export the data<code>extracted</code>from the site.</h3>
       </div>
     </header>
-    <!-- enter the url -->
+    
     <div class="demo">
       <div class="demo-wrapper">
         <button class="js-container-target demo-toggle-button">
-          choose file
+          Export Data To file
           <div class="demo-meta u-avoid-clicks">json, csv, xml</div>
         </button>
         <div class="demo-box">
-          <h5>choose the extention </h5>
-          <div class="demo-controls">
-              <p></p>
- <p> <input type="radio" name="fileExtention" id = "xml" value="XML"> XML<br/>
-</p>
-  <p>  <input type="radio" name="fileExtention" id="JSON" value="JSON"> JSON<br/>
-</p>
-  <p>  <input type="radio" name="fileExtention" id = "csv" value="CSV"> CSV
-</p>
-             </div>
           
-          <p></p>
+          <h5>Choose The Extention </h5>
+          <p>Choose the file extention that you want to save data. or show it here.</p>
+       
           <div class="demo-controls">
-            <button class="demo-button" id="export">export</button>
+      
+            <input type="radio" name="fileExtention" id="xml" value="XML"> XML<br/>
+
+          </div>
+          <div class="demo-controls">
+            <input type="radio" name="fileExtention" id="JSON" value="JSON"> JSON<br/>
+
+          </div>
+          <div class="demo-controls">
+            <input type="radio" name="fileExtention" id="csv" value="CSV"> CSV
+
+          </div>
+
+         <p></p>
+          <div class="demo-controls">
+            <button class="demo-button" id="export">Export</button>
           </div>
         </div>
       </div>
     </div>
-      <script type="text/javascript">
-        require(global.appRoot + '/exporter/renderer-process/export-data')
-      </script>
+
+       <div class="demo">
+      <div class="demo-wrapper">
+        <button class="js-container-target demo-toggle-button">
+          Show Data
+          <div class="demo-meta u-avoid-clicks"></div>
+        </button>
+        <div class="demo-box">
+        
+          <p>Here you can see all extracted data. the table show the data extracted, and the url where thats data came from.</p>
+         <p>You can filter there data so you can get exactly what you want.</p>
+
+          <div class="demo-controls">
+            <button class="demo-button" id="showalldata">Show All Data</button>
+          </div>
+         
+         <div class="demo-controls" id = "tablediv">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      require(global.appRoot + '/exporter/renderer-process/export-data')
+    </script>
   </section>
 </template>

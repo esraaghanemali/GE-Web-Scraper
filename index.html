@@ -1,21 +1,54 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <script>
+  <script>
     const path = require('path')
-     global.appRoot = path.resolve(__dirname)
-   
-    var d =require(global.appRoot+'/models/xmlFile');
+    global.appRoot = path.resolve(__dirname)
 
-     global.xmlfile = d.generateXmlFile('hhhh','','')
-var storeData = require(global.appRoot + '/models/extractedData')
-var map = {}
+    global.notification = require(global.appRoot + '/main-process/show-notification')
+    var d = require(global.appRoot + '/models/xmlFile');
+    global.xmlfile = d.generateXmlFile('', '', '')
+    var storeData = require(global.appRoot + '/models/extractedData')
+    var info = []
+    global.curPage = ''
+    global.finalData = []
 
- global.finalData = storeData.generateXmlExportFile(map)
+// chrome =require(global.appRoot + '/browser/services/chrome')
+//   chrome.startChrome()
 
-      
-   // console.log('index'+global.appRoot)
+
+// chrome.on('stdout', (data) => console.log(data))
+// chrome.on('exit', (code, sig) => process.exit(code, sig))
+
+
+  var {BrowserWindow} = require('electron').remote
+  // var pathE =global.appRoot +"/jnhgnonknehpejjnehehllkliplmbmhn/0.2.0.13_0"
+
+    var pathE =global.appRoot +"/mhjhnkcfbdhnjickkkdbjoemdmbfginb/1.1_0"
+  
+  BrowserWindow.removeDevToolsExtension('SelectorGadget')
+   // BrowserWindow.removeDevToolsExtension('Web Scraper')
+ //BrowserWindow.removeDevToolsExtension('FoxyProxy Basic')
+// pathE.replace(/[\n\r]/g, '\\n')
+//                     .replace(/&/g, "&amp;")
+//                     .replace(/-/g, "&#45;");
+//BrowserWindow.addDevToolsExtension(pathE)
+
+
+
+  // bro =require(global.appRoot + '/crawler/services/browser-window')
+  // bro.window('https://github.com/Hani-Ghazi/traffic')
+  
+//}
+// var electron = require('electron').remote
+// var BrowserWindow = electron.BrowserWindow
+// var win = new BrowserWindow({ width: 800, height: 600 });
+// win.loadURL('https://github.com');
+// win.addDevToolsExtension(
+//     'C:\Users\esraa\AppData\Local\Google\Chrome\User Data\Default\Extensions\jnhgnonknehpejjnehehllkliplmbmhn\0.2.0.13_0'
+//   );
+
   </script>
   <meta charset="utf-8">
   <link rel="stylesheet" href="assets/css/variables.css">
@@ -29,68 +62,80 @@ var map = {}
   <link rel="import" href="sections/about.html">
   <link rel="import" href="sections/scraping-engine/xml-section.html">
   <link rel="import" href="sections/extrator/extractor-section.html">
-    <link rel="import" href="sections/exporter/exporter-section.html">
-
+  <link rel="import" href="sections/crawler/navPages-section.html">
+  <link rel="import" href="sections/exporter/exporter-section.html">
 </head>
+
 <body>
 
   <nav class="nav js-nav">
     <header class="nav-header">
-      <h1 class="nav-title">Web <strong>Scraper</strong></h1>
-      <svg class="nav-header-icon"><use xlink:href="assets/img/icons.svg#icon-electron"></use></svg>
+      <h1 class="nav-title"><strong>GE </strong>Web <strong>Scraper</strong></h1>
+      <svg class="nav-header-icon">
+        <use xlink:href="assets/img/icons.svg#icon-electron"></use>
+      </svg>
     </header>
 
     <div class="nav-item u-category-scrape">
       <h5 class="nav-category">
-        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
-        Load XML
+        <svg class="nav-icon">
+          <use xlink:href="assets/img/icons.svg#icon-windows"></use>
+        </svg>
+        Get Started
       </h5>
-      <button type="button" id="button-windows" data-section="xml" class="nav-button">Load <em>data</em> file</button>
+      <button type="button" id="button-windows" data-section="xml" class="nav-button"><em>Start</em></button>
     </div>
 
-   <div class="nav-item u-category-extract">
+    <div class="nav-item u-category-communication">
       <h5 class="nav-category">
-        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-windows"></use></svg>
-        Extracting
+        <svg class="nav-icon">
+          <use xlink:href="assets/img/icons.svg#icon-system"></use>
+        </svg>
+        Exporting
       </h5>
-      <button type="button" id="button-extractor" data-section="extractors" class="nav-button">extract <em>Xml</em>data</button>
+      <button type="button" id="button-exporting" data-section="exporter" class="nav-button">Export <em>data </em></button>
     </div>
 
-       <div class="nav-item u-category-communication">
+
+    <div class="nav-item u-category-media">
       <h5 class="nav-category">
-        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-system"></use></svg>
+        <svg class="nav-icon">
+          <use xlink:href="assets/img/icons.svg#icon-system"></use>
+        </svg>
         Crawling
       </h5>
       <button type="button" id="button-crawling" data-section="crawler" class="nav-button">Crawling <em>Pages </em></button>
     </div>
 
-         <div class="nav-item u-category-communication">
+    <div class="nav-item u-category-extract">
       <h5 class="nav-category">
-        <svg class="nav-icon"><use xlink:href="assets/img/icons.svg#icon-system"></use></svg>
-        Exporting
+        <svg class="nav-icon">
+          <use xlink:href="assets/img/icons.svg#icon-windows"></use>
+        </svg>
+        Extracting
       </h5>
-      <button type="button" id="button-exporting" data-section="exporter" class="nav-button">export <em>data </em></button>
+      <button type="button" id="button-extractor" data-section="extractors" class="nav-button">extract <em>Xml</em>data</button>
     </div>
-
     <footer class="nav-footer">
       <button type="button" id="button-about" data-modal="about" class="nav-footer-button">About</button>
       <a class="nav-footer-logo" href="" aria-label="Homepage">
-        <svg class="nav-footer-icon"><use xlink:href="assets/img/icons.svg#icon-love"></use></svg>
+        <svg class="nav-footer-icon">
+          <use xlink:href="assets/img/icons.svg#icon-love"></use>
+        </svg>
       </a>
     </footer>
   </nav>
 
   <main class="content js-content"></main>
 
-    <script>
-    require(global.appRoot+'/assets/imports')
-    require(global.appRoot+'/assets/ex-links')
-    require(global.appRoot+'/assets/nav')
-    require(global.appRoot+'/assets/demo-btns')
-    require(global.appRoot+'/assets/code-blocks')
-    require(global.appRoot+'/assets/normalize-shortcuts')
-    // var xml = require(global.appRoot+'/exporter/services/xml')
-    // xml.buildXml()
+  <script>
+    require(global.appRoot + '/assets/imports')
+    require(global.appRoot + '/assets/ex-links')
+    require(global.appRoot + '/assets/nav')
+    require(global.appRoot + '/assets/demo-btns')
+    require(global.appRoot + '/assets/code-blocks')
+    require(global.appRoot + '/assets/normalize-shortcuts')
   </script>
 </body>
+
 </html>

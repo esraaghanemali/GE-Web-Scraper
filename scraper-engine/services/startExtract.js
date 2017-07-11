@@ -7,14 +7,19 @@ var res = {
 nav_Extract : function getAllData(cb)
 {
   var url = xml.url()
-   //console.log ("startextract start url: "+url)
 
-  //console.log("startextract service begin")
-  extractService.extract(url,function (data) {
-     //console.log("startextract service returned data: "+data)
-    cb(data)
-  }
-  )
+  extractService.extract(url,function (result) {
+   // console.log("service "+result.code)
+   if(result.code==0)
+   {
+cb({code:0,msg:result.msg})
+   }
+   else
+   {
+cb({code:1,msg:result.msg})
+   }
+    
+  })
 }
 
 }

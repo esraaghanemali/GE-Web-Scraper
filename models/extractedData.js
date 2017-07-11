@@ -16,19 +16,14 @@ class extractedData {
   {
     this._data = newData
   }
-
-   addData (key,newData)
-  {
-this._data[key]=newData
-  }
 }
 
 //funtion to ceate new xml
-var createXmlFile = {
-  generateXmlExportFile :  function (data)
+var createFile = {
+  generateExportFile :  function (data)
 {
 return new extractedData(data);
 }
 }
 
-module.exports = createXmlFile
+module.exports = createFile

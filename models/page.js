@@ -3,8 +3,9 @@
  */
 'use strict';
  class page_item {
- constructor(url, page) {
+ constructor(url, title,page) {
     this._url = url;
+    this._title = title;
     this._page = page;
   }
 
@@ -16,10 +17,19 @@
     this._url = newUrl
   }
 
+  get title ()
+  {
+   return this._title
+  }
+  set title (newTitle){
+    this._title = newTitle
+  }
+
     get page ()
   {
   return this._page;
-  }
+}
+
   set page(newPage)
   {
     this._page = newPage
@@ -27,9 +37,9 @@
 }
 
 var exportPage = {
-  generatePage :  function (url, page) 
+  generatePage :  function (url,title, page) 
 {
-return new page_item(url, page) ;
+return new page_item(url,title, page) ;
 }
 }
 

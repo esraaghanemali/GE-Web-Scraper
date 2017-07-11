@@ -3,49 +3,75 @@
         <header class="section-header">
             <div class="section-wrapper">
                 <h1>
-                    <svg class="section-icon"><use xlink:href="assets/img/icons.svg#icon-native-ui"></use></svg>
-                   start by loading the xml file
+                    <svg class="section-icon">
+                        <use xlink:href="assets/img/icons.svg#icon-native-ui"></use>
+                    </svg>
+                    Start By Loading The Model File
                 </h1>
-                <h3>load the xml file that contains the start url of site you want to extract data from. the data  and navidations selectors.
-            
+                <h3>load the model file that contains the start url of site you want to extract data from. the data and navigations
+                    selectors.
+
                 </h3>
 
-                <p>This is the start process of extracting the data because, this processs load the data seletors and navidations.
-                    the data selectors refer to the fields you want the data from.
-                    and navigations are defining the pages to extract data from.
-    
+                <p>This is the start process of extracting the data. this processs load the data seletors and navidations. the
+                    data selectors refer to the fields you want the data from. and navigations are defining the pages to
+                    extract data from.
+
                 </p>
- <p>just enjoy it.
+                <p>JUST ENJOY IT.
                 </p>
-                <p>Open the <a href="">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a> in your browser.</p>
+                <p>Open the <a href="">full API documentation<span class="u-visible-to-screen-reader">(opens in new window)</span></a>                    in your browser.</p>
             </div>
         </header>
 
-
-
         <div class="demo">
             <div class="demo-wrapper">
-                <button class="js-container-target demo-toggle-button">choose file
-                    <div class="demo-meta u-avoid-clicks">choose xml file from our extintion.</div>
+
+                <button class="js-container-target demo-toggle-button">Load File
+                    <div class="demo-meta u-avoid-clicks">Choose model file generated from our extintion.</div>
                 </button>
                 <div class="demo-box">
+                    <p>In the <code>first</code> step: load the xml file u download it from the extention. you can see the file
+                        content and edit it from option below.</p>
                     <div class="demo-controls">
-                        <button class="demo-button" id="selectxmlfile">Load XML file</button>
+
+                        <button class="demo-button" id="selectxmlfile">Load</button>
                         <span class="demo-response" id="showxmlpath"></span>
                     </div>
-                    <p>int the <code>first</code> step just load the xml file u download it from the extention.
-                    you can see the file content and edit it from option below.</p>
 
-   <div class="demo-controls">
+                    <div class="demo-controls" id="secStep" style="display: none">
+                        <p>now please select start extract to start extracting data.
+                        </p>
+
+                    </div>
+                    <!--<div class="demo-controls">
                         <button class="demo-button" id="startExtract">start Extracting</button>
                         <span class="demo-response" id="startExtractSpan"></span>
-                    </div>
-                    
+                    </div>-->
+
                 </div>
             </div>
         </div>
 
-            <div class="demo">
+
+        <div class="demo" id="startAfterExtract" style="display: none">
+            <div class="demo-wrapper">
+                <button class="js-container-target demo-toggle-button">Start Extracting
+                    <div class="demo-meta u-avoid-clicks">navigate and etract.</div>
+                </button>
+                <div class="demo-box">
+
+                    <p>press start to navigate all pages selected, and extract the data from these pages.</p>
+
+                    <div class="demo-controls">
+                        <button class="demo-button" id="startExtract">start</button>
+                        <span class="demo-response" id="startExtractSpan"></span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--<div class="demo">
             <div class="demo-wrapper">
                 <button class="js-container-target demo-toggle-button">edit file
                     <div class="demo-meta u-avoid-clicks">check the content of xml file.</div>
@@ -53,17 +79,17 @@
                 <div class="demo-box">
                     <div class="demo-controls">
                         <!--<button class="demo-button" id="selectxmlfile">Load XML file</button>
-                        <span class="demo-response" id="showxmlpath"></span>-->
+                        <span class="demo-response" id="showxmlpath"></span>
                     </div>
-                    <p>In this demo, the <code>ipc</code> module is used to send a message from the renderer process instructing the main process to launch the open file (or directory) dialog. If a file is selected, the main process can send that information back to the renderer process.</p>
+                    <p>edit the xml file,  add, edit, delete selectors.</p>
                 </div>
             </div>
-        </div>
+        </div>-->
 
 
         <script type="text/javascript">
-          require(global.appRoot+'/scraper-engine/renderer-prosess/open-file')
-          require(global.appRoot+'/scraper-engine/renderer-prosess/startExtract')
+            require(global.appRoot + '/scraper-engine/renderer-prosess/open-file')
+            require(global.appRoot + '/scraper-engine/renderer-prosess/startExtract')
        //   require('./scraper-engine/renderer-process/error')
         //  require('./scraper-engine/renderer-process/information')
         //  require('./scraper-engine/renderer-process/save')

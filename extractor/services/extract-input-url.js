@@ -7,7 +7,6 @@ var res = {
  {
      var extractedData = []
 
-//get page
 request(url, function (error, response, html) {
   if (!error && response.statusCode == 200) {
    
@@ -15,7 +14,7 @@ request(url, function (error, response, html) {
        for(var i =0 ; i<selectors.length ; i++)
   {
       var selectedArray = []
- text(selectors[i].element_selector).each( function (j,em)
+           text(selectors[i].element_selector).each( function (j,em)
         {
              
                selectedArray.push(text(this).text())
@@ -24,6 +23,10 @@ request(url, function (error, response, html) {
         extractedData.push({title: selectors[i].title , data: selectedArray})
    }
      cb(extractedData)
+  }
+  else
+  {
+      console.log("err "+error)
   }
 });
       

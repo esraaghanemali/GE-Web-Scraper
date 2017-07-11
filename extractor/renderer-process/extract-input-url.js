@@ -5,20 +5,18 @@
 var buildXmlFile = require(global.appRoot+'/main-process/writeXmlFile')
 
  var ExtractUrlservice = require(global.appRoot+'/extractor/services/extract-input-url')
-
+var startExtractBegin = document.getElementById('startExtractBegin')
    extractUrl.addEventListener('click', function () {
    if (urlInput.value == '') urlInput.placeholder = 'enter url please.'
    else if (seletorInputUrl.value == '') seletorInputUrl.placeholder = 'enter selecto please.'
     else
     {
-
-ExtractUrlservice.extractData(extractUrl,seletorInputUrl,function(data)
+      startExtractBegin.innerHTML = 'Starting....'
+      console.log("enter ")
+     ExtractUrlservice.extract(urlInput.value,seletorInputUrl.value,function(data)
 {
+  startExtractBegin.innerHTML = 'Finished :) extracting '+ data.length+' elements'
 
-// buildXmlFile.write(data)
-
-console.log('url: '+ extractUrl)
-console.log('data from input: '+ data.length)
 })
     }
      })

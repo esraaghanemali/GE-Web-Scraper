@@ -5,12 +5,17 @@ var startExtract = document.getElementById('startExtract')
 startExtract.addEventListener('click',function(event)
 {
 startExtractSpan.innerHTML='extracting begin.'
-startExtractService.nav_Extract(function(data)
+startExtractService.nav_Extract(function(result)
 {
-    console.log("data get: "+ data)
+    if(result.code==0)
+    {
+    }
+    else
+    {
+console.log("data get: "+ result.msg)
+    }
+    
     //do whatever in data
 })
-//extract from each page
 
-//get data
 })

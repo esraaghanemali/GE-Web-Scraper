@@ -1,6 +1,5 @@
 const cheerio = require('cheerio')
 var xml = require(global.appRoot + '/main-process/getXmlFileInfo')
-
 var crawler = require(global.appRoot + '/crawler/services/navigate-pages')
 
 var fs = require('fs')
@@ -15,10 +14,13 @@ var res = {
   extract: function getData(url, cb) {
 
     var selectors = xml.dataSelectors()
-crawler.navigatePages(url,function(page){
- var text = cheerio.load(page.body)
-    //var text = cheerio.load(data)
-    console.log("test service"+page.body.length)
+crawler.navigatePages(url,function(result){
+  if(result.code==1)
+  {
+  var page = result.msg
+  var text = cheerio.load(page.body)
+ var text = cheerio.load(data)
+    console.log("test service"+page)
       for (var i = 0; i < selectors.length; i++) {
         var selectedArray = []
         text(selectors[i].element_selector).each(function (j, em) {
@@ -27,7 +29,14 @@ crawler.navigatePages(url,function(page){
         })
         extractedData.push({ title: selectors[i].title, data: selectedArray })
       }
-      cb(extractedData)
+       cb({code : 1 , msg:extractedData})
+  }
+  else
+  {
+   cb({code :0 , msg :'Erroe'})
+  }
+
+     
 })
   }
 

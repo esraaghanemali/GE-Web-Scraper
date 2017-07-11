@@ -17,16 +17,26 @@ if(chooseFile.value=='')
 }
 else
 {
+   pageName.innerHTML = 'Extracting...'
 
-  testService.extract(chooseFile.value,function (data) {
-var table = document.getElementById("testTable")
+  testService.extract(chooseFile.value,function (res) {
+    if(res.code ==0)
+    {
+     pageName.innerHTML = res.msg
+     
+    }
+    else if(res.code==1)
+    {
+       pageName.innerHTML = 'Finished.'
+       var data = res.msg
+      var table = document.getElementById("testTable")
 while(table.hasChildNodes())
 {
   table.removeChild(table.firstChild)
 }
     var header = table.createTHead();
     var row = header.insertRow(0);
-    //console.log('data ' + data[0].title)
+  
 
 
     for (var i = 0; i < data.length; i++) {
@@ -51,6 +61,8 @@ while(table.hasChildNodes())
       }
 
     }
+    }
+
   }
   )
 }

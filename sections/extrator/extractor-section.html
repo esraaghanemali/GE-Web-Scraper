@@ -28,16 +28,16 @@
           <h5>selector </h5>
           <div class="demo-controls">
 
-            <input class="demo-input" id="seletorInputUrl" aria-label="enter url." placeholder="enter selector."></input>
+            <input class="demo-input" id="seletorInputUrl" aria-label="enter url." placeholder="enter selectors separated by ,"></input>
           </div>
           <p></p>
           <div class="demo-controls">
             <button class="demo-button" id="extractUrl">extract</button>
              <span class="demo-response" id="startExtractBegin"></span>
           </div>
-           <div class="demo-controls">
-            <table id="extractFromUrlTable">
-            </table>
+           <div class="demo-controls" id="extractFromUrldiv">
+            <!--<table id="extractFromUrlTable">
+            </table>-->
           </div>
         </div>
       </div>
@@ -52,18 +52,21 @@
           <div class="demo-meta u-avoid-clicks">extract data</div>
         </button>
         <div class="demo-box">
-          <h5>1: koora, 2: yomeat, 3 ecommerce </h5>
+          <h5>url </h5>
           <div class="demo-controls">
 
             <input class="demo-input" id="htmlPage" aria-label="choose file." placeholder="choose file."></input>
           </div>
           <div class="demo-controls">
-            <p></p>
+           <h5></h5>
             <button class="demo-button" id="testxmlfile">extract</button>
-            <p id='showdatap'></p>
+            <span id="pageName"></span>
+            
           </div>
+           <h5></h5>
           <div class="demo-controls">
-            <p id="pageName"></p>
+            
+            <span id="pageName"></span>
 
             <table id="testTable">
             </table>

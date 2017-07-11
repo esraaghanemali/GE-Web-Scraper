@@ -1,0 +1,51 @@
+<template class="task-template">
+  <section id="crawler-section" class="section js-section u-category-media">
+    <header class="section-header">
+      <div class="section-wrapper">
+        <h1>
+          <svg class="section-icon">
+            <use xlink:href="assets/img/icons.svg#icon-menu"></use>
+          </svg>
+
+        </h1>
+        <h3>Here you can watch the<code>crawling</code>process <code>by yourself</code> where you can see the pages where the
+          crawler viste.</h3>
+      </div>
+    </header>
+
+     <!--enter the url -->
+    <div class="demo">
+      <div class="demo-wrapper">
+        <p>the current url, title, and the selected data.</p>
+          <div class="demo-controls">
+
+        
+         <button class="demo-button" id="currentPageUrlBtn">see procee</button>
+         </div>
+          <div class="demo-controls">
+        <span class="demo-response" id="currentPageUrl"></span>
+         </div>
+      </div>
+    </div>
+
+
+    <!--<div class="demo">
+      <div class="demo-wrapper">
+        <button class="js-container-target demo-toggle-button">
+          current page url
+          <div class="demo-meta u-avoid-clicks">see the url of page.</div>
+        </button>
+        <div class="demo-box">
+          <div class="demo-controls">
+            <h5>the current page url</h5>
+          </div>
+          <div class="demo-controls">
+            <span class="demo-response" id="currentPageUrl"></span>
+          </div>
+        </div>
+      </div>-->
+      <script type="text/javascript">
+        require(global.appRoot + '/crawler/renderer-process/navigate-pages')
+      </script>
+  </section>
+</template>

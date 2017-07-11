@@ -58,6 +58,8 @@ var res = {
    //  console.log("absoluteLinks "+ absoluteLinks.length)
 
         for (var i = 0; i < selectors.length; i++) {
+          if(selectors[i].type != 'multi_level')
+          {
       text(selectors[i].element_selector).each(function (j, em) {
 
         var link = text(this).closest('a').attr('href')
@@ -87,6 +89,7 @@ var res = {
 
 
       })
+        }
       // extractedData.push({ title: selectors[i].title, data: selectedArray })
     }
 //     for (var i = 0; i < selectors.length; i++) {

@@ -2,12 +2,10 @@ var fs = require('fs')
 var xml2js = require('xml2js')
 var parser = new xml2js.Parser()
 
-
+ var info = require(global.appRoot + '/renderer-process/information')
 var dataFiled = require(global.appRoot + '/models/data-field')
 var navFiled = require(global.appRoot + '/models/navigation-field')
 var collections = require(global.appRoot + '/models/xmlFile')
-//testing
-var maping = require(global.appRoot + '/scraper-engine/services/map-selec-href')
 
 var parse = {
     parseFile:
@@ -16,7 +14,18 @@ var parse = {
         var nav_selectors = []
         fs.readFile(filePath, function (err, data) {
             if (err) {
-                global.notification.show("Oops! Reading Error", "error when reading model file. the error: " + err.message, 0)
+                
+   const options = {
+    type: 'info',
+    title: 'Oops! Reading Error',
+    message: "Error when reading model file. the error: " + err.message +". Please try again.",
+    buttons: ['Ok']
+  }
+                       info.showInfo(options , function(index)
+                       {
+                           // console.log(index)
+                       })
+               // global.notification.show("Oops! Reading Error", "error when reading model file. the error: " + err.message, 0)
             }
 
             else {
@@ -26,8 +35,18 @@ var parse = {
                     .replace(/-/g, "&#45;");
                 parser.parseString(xml, function (err, result) {
                     if (err) {
-                        global.notification.show("Oops! Parsing Error", "error when parsing model file. the error: " + err.message, 0)
-                        cb({ code: 0, msg: 'error' })
+                           const options = {
+    type: 'info',
+    title: 'Oops! Parsing Error',
+    message: "Error when loading the model file. Please Load .xml file.",
+    buttons: ['Ok']
+  }
+                       info.showInfo(options , function(index)
+                       {
+                           // console.log(index)
+                       })
+                   //     global.notification.show("Oops! Parsing Error", "error when parsing model file. the error: " + err.message, 0)
+                        cb({ code: 0, msg: err })
                     }
                     else {
                         try {
@@ -50,7 +69,17 @@ var parse = {
                             cb({ code: 1, msg: 'Parsing finish correctly.' })
                         }
                         catch (e) {
-                            global.notification.show("Oops! Parsing Error", "please Load Correct model file. " + e.message, 0)
+                             const options = {
+    type: 'info',
+    title: 'Oops! Parsing Error',
+    message: "Error when loading the model file. It dosent seem to be a correct file. Please Load the correct model file from our extention :)",
+    buttons: ['Ok']
+  }
+                       info.showInfo(options , function(index)
+                       {
+                           // console.log(index)
+                       })
+                           // global.notification.show("Oops! Parsing Error", "please Load Correct model file. " + e.message, 0)
                             cb({ code: 0, msg: 'exception.' + e })
 
 

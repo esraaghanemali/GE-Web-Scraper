@@ -1,14 +1,14 @@
 var openfile = require('electron').remote
 var dialog = openfile.dialog
 var parse = require(global.appRoot + '/scraper-engine/services/parseXml')
-var notification = require(global.appRoot + '/main-process/show-notification');
 
 var selectFile =
   {
     openSelectDialog: function openDialog(cb) {
       dialog.showOpenDialog(function (fileNames) {
         if (fileNames === undefined) {
-          notification.show("Oops!", "you dont choose any thing :\ nothing saved.", 0)
+
+          global.notification.show("Oops!", "you dont choose any thing :\ nothing saved.", 0)
           cb({ code: 0, msg: 'nothing selected' })
 
         } else {
@@ -17,6 +17,8 @@ var selectFile =
               cb({ code: 1, msg: 'u select: ' + fileNames[0] })
             }
             else {
+
+                      
               cb({ code: 0, msg: result.result })
             }
 

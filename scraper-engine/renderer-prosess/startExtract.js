@@ -2,6 +2,7 @@ var startExtractService = require(global.appRoot+'/scraper-engine/services/start
 
 var startExtractSpan = document.getElementById('startExtractSpan')
 var startExtract = document.getElementById('startExtract')
+var i = 1
 startExtract.addEventListener('click',function(event)
 {
 startExtractSpan.innerHTML='extracting begin.'
@@ -12,6 +13,17 @@ startExtractService.nav_Extract(function(result)
     }
     else
     {
+        if(global.finish==true)
+        {
+ startExtractSpan.innerHTML='finished :) '
+        }
+        
+         else
+         {
+  startExtractSpan.innerHTML='extracting page: '+i
+        i++
+         }
+      
 console.log("data get: "+ result.msg)
     }
     

@@ -1,6 +1,6 @@
 const exportbtn = document.getElementById('export')
 var exportService = require(global.appRoot + '/exporter/services/export-data')
-
+ var info = require(global.appRoot + '/renderer-process/information')
 
 var radioXml = document.getElementById('xml')
 var radioJson = document.getElementById('JSON')
@@ -31,9 +31,25 @@ showalldata.addEventListener('click', function () {
     var $ = require('jquery');
 var DataTable = require('datatables.net')(window, $);
 
-    // $( "#example" ).remove();
-    var data = '<table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0"><thead><tr>'
 
+     $( "#example_wrapper" ).remove()
+stepb()
+    
+if(global.finalData[0]==undefined)
+{
+                                const options = {
+    type: 'info',
+    title: 'Error!',
+    message: "Error loading the model file. It dosent seem you Load model file. Please Load the correct model file from our extention :)",
+    buttons: ['Ok']
+  }
+                       info.showInfo(options , function(index)
+                       {
+                           // console.log(index)
+                       })
+}
+else{
+    var data = '<table id="example" class="table table-striped table-bordered" width="100%" cellspacing="0"><thead><tr>'
 
     for (var j = 0; j < global.finalData[0].extracted.length; j++) {
         data = data + '<th>' + global.finalData[0].extracted[j].title + '</th>'
@@ -57,12 +73,12 @@ var DataTable = require('datatables.net')(window, $);
                 
            
             }
-            console.log("max "+ maxRow)
+         //   console.log("max "+ maxRow)
             for(var k= 0 ; k< maxRow ; k++)
             {
                 dataRow = []
                     for (var j = 0; j < global.finalData[i].extracted.length; j++) {
-                        console.log("global.finalData[i].extracted[j].data.length "+global.finalData[i].extracted[j].data.length)
+                      //  console.log("global.finalData[i].extracted[j].data.length "+global.finalData[i].extracted[j].data.length)
                 if(k <global.finalData[i].extracted[j].data.length  )
                 {
                    dataRow.push(global.finalData[i].extracted[j].data[k])
@@ -104,5 +120,11 @@ contentArray.push(dataRow)
     $('#example').DataTable()
 
 
+}
+
 
 })
+function stepb()
+{
+   
+}

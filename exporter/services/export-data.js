@@ -3,6 +3,8 @@ var writeFileService =  require(global.appRoot + '/exporter/services/write-file'
 var xmlService = require(global.appRoot + '/exporter/services/xml')
 var jsonService = require(global.appRoot + '/exporter/services/json')
 var csvService = require(global.appRoot + '/exporter/services/csv')
+var xlsxService = require(global.appRoot + '/exporter/services/xlsx')
+
 var fs = require('fs')
 var result =
     {
@@ -51,6 +53,33 @@ var result =
 
                  
             }
+
+                if (choosen == 4) {
+                 var jsonObject  = require(global.appRoot + '/exporter/services/csv-data')
+                 jsonObject.buildJsonObj(function(jsonResult)
+                        {
+
+                                   if(jsonResult.code==1)
+                            {
+                           xlsxService.buildXlsx(jsonResult.msg,function (content)
+                            {
+                               
+                         //  writeFileService.write(content.msg)
+                            })
+                        }
+                        else
+                        {
+                            console.log('error in json')
+                        }
+
+
+
+                        })
+
+                 
+            }
+
+
 
         }
     }

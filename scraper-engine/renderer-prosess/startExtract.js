@@ -5,6 +5,7 @@ var startExtract = document.getElementById('startExtract')
 var i = 1
 startExtract.addEventListener('click',function(event)
 {
+    global.finalData=[]
 startExtractSpan.innerHTML='extracting begin.'
 startExtractService.nav_Extract(function(result)
 {

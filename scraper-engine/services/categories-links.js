@@ -30,11 +30,14 @@ var res = {
    //  console.log("absoluteLinks "+ absoluteLinks.length)
 
         for (var i = 0; i < selectors.length; i++) {
+         
           if(selectors[i].type == 'multi_level')
           {
+             console.log('type multi')
       text(selectors[i].element_selector).each(function (j, em) {
 
         var link = text(this).closest('a').attr('href')
+        console.log('each found '+ link)
        var found = false
          for (var abs = 0; abs < absoluteLinks.length; abs++) {
           if (link == absoluteLinks[abs]) {

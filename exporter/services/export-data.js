@@ -12,24 +12,22 @@ var result =
             if (choosen == 1) {
                 xmlService.buildXml(function (content)
                 {
-                writeFileService.write(content)
+                writeFileService.write(choosen,content)
                 })
             }
+
+
             
        if (choosen == 2) {
              xmlService.buildXml(function (content)
-                {
-                   
+                { 
                      jsonService.buildJson(content,function (jsoncontent)
                 {
-                    
                     var strongobj =JSON.stringify(jsoncontent.msg)
-                writeFileService.write(strongobj)
+                writeFileService.write(choosen,strongobj)
                 })
                
-            })
-            
-               
+            })    
             }
 
                 if (choosen == 3) {
@@ -40,18 +38,22 @@ var result =
                             {
                            csvService.buildCsv(jsonResult.msg,function (content)
                             {
-                               
-                         //  writeFileService.write(content.msg)
+                                if(content.code==1)
+                                {
+  writeFileService.write(choosen,content.msg)
+                                } 
+                                else
+                                {
+                                    console.log('error in csv service')
+                                }  
+                        
                             })
                         }
                         else
                         {
                             console.log('error in json')
                         }
-                        })
-                    
-
-                 
+                        })      
             }
 
                 if (choosen == 4) {
@@ -63,8 +65,14 @@ var result =
                             {
                            xlsxService.buildXlsx(jsonResult.msg,function (content)
                             {
-                               
-                         //  writeFileService.write(content.msg)
+                                  if(content.code==1)
+                                {
+  writeFileService.write(choosen,content.msg)
+                                } 
+                                else
+                                {
+                                    console.log('error in xlsx service')
+                                }  
                             })
                         }
                         else

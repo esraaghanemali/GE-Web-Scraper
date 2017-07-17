@@ -21,7 +21,7 @@ var fs = require('fs')
 
 
 var writer = csvWriter({ headers:jsonData.head})
-writer.pipe(fs.createWriteStream('esoo.csv'))
+// writer.pipe(fs.createWriteStream('esoo.csv'))
 
 for(var j = 0 ; j < jsonData.data.length ; j++)
 {

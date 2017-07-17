@@ -1,3 +1,9 @@
+var result = {
+    selec :
+function selecfun ()
+{
+
+
 
 (function( window, undefined ) {
 
@@ -7429,8 +7435,37 @@ function diff_match_patch(){this.Diff_Timeout=1.0;this.Diff_EditCost=4;this.Diff
 
 }).call(this);
 
+
+/*
+ The MIT License
+
+ Copyright (c) 2012 Andrew Cantino
+ Copyright (c) 2009 Andrew Cantino & Kyle Maxwell
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in
+ all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+*/
+
+
 (function() {
-  var SelectorGadget = (function() {
+  var SelectorGadget;
+
+  window.SelectorGadget = SelectorGadget = (function() {
 
     function SelectorGadget() {}
 
@@ -7586,7 +7621,7 @@ function diff_match_patch(){this.Diff_Timeout=1.0;this.Diff_EditCost=4;this.Diff
     	return;
     }           
      
-     //console.warn("sgMouseover script_needed "+gadget.script_needed);
+     console.warn("sgMouseover script_needed"+gadget.script_needed);
 
    
       if (gadget.unbound) {
@@ -7639,7 +7674,7 @@ function diff_match_patch(){this.Diff_Timeout=1.0;this.Diff_EditCost=4;this.Diff
       var elem, gadget;
       gadget = e.data.self;
 
-    //console.warn("sgMouseout script_needed"+gadget.script_needed);
+    console.warn("sgMouseout script_needed"+gadget.script_needed);
     if(gadget.script_needed==true)
     {
     	return;
@@ -7700,7 +7735,7 @@ function diff_match_patch(){this.Diff_Timeout=1.0;this.Diff_EditCost=4;this.Diff
       var elem, gadget, potential_elem, prediction, w_elem;
       gadget = e.data.self;
 
-    //console.warn("sgMousedown script_needed"+gadget.script_needed);
+    console.warn("sgMousedown script_needed"+gadget.script_needed);
 
        if(gadget.script_needed==true)
     {
@@ -7764,7 +7799,7 @@ function diff_match_patch(){this.Diff_Timeout=1.0;this.Diff_EditCost=4;this.Diff
 		  //gadget.selected_data=gadget.prediction_helper.cssToXPath(t);
 		   gadget.selected_data=t;
 
-		  // console.warn("selected_data"+gadget.selected_data);
+		   console.warn("selected_data"+gadget.selected_data);
           gadget.ok_button.css('display', 'block');
 		  gadget.data_path.attr('value',t);
 	  }
@@ -7967,7 +8002,7 @@ function diff_match_patch(){this.Diff_Timeout=1.0;this.Diff_EditCost=4;this.Diff
 	  {
 		  res = self.prediction_helper.cssToXPath(path);
 	  }
-	 //   console.warn("selected_data"+self.selected_data);
+	    console.warn("selected_data"+self.selected_data);
 
 	   res = 'Data ' +self.selected_data + ' Nav '+self.selected_nav;
            var file=createXmlFile(self.final_selected_data,self.final_selected_nav);
@@ -8156,7 +8191,7 @@ SelectorGadget.prototype.showNavList = function(e) {
 
        for (var i = 0; i < self.final_selected_data.length; i++)
        {
-        //    console.log(self.final_selected_data[i][0] + " : " +self.final_selected_data[i][1]);
+            console.log(self.final_selected_data[i][0] + " : " +self.final_selected_data[i][1]);
        }
 
     };
@@ -8189,7 +8224,7 @@ SelectorGadget.prototype.showNavList = function(e) {
 
 	   for (var i = 0; i < self.final_selected_data.length; i++)
        {
-           // console.log(self.final_selected_data[i][0] + " : " +self.final_selected_data[i][1]);
+            console.log(self.final_selected_data[i][0] + " : " +self.final_selected_data[i][1]);
        }
 
     };
@@ -8499,10 +8534,28 @@ SelectorGadget.prototype.showNavList = function(e) {
       }
       return jQuerySG('.selector_gadget_loading').remove();
     };
-	
-module.exports = SelectorGadget.toggle()
+
+    // pgbovine - don't use google analytics
+    /*
+    SelectorGadget.prototype.analytics = function() {
+      var cookie, random, referer, today, urchinUrl, uservar, utmac, utmhn, utmn, utmp;
+      utmac = 'UA-148948-9';
+      utmhn = encodeURIComponent('www.selectorgadget.com');
+      utmn = this.randBetween(1000000000, 9999999999);
+      cookie = this.randBetween(10000000, 99999999);
+      random = this.randBetween(1000000000, 2147483647);
+      today = Math.round(new Date().getTime() / 1000.0);
+      referer = encodeURIComponent(window.location.href);
+      uservar = '-';
+      utmp = 'sg';
+      urchinUrl = 'http://www.google-analytics.com/__utm.gif?utmwv=1&utmn=' + utmn + '&utmsr=-&utmsc=-&utmul=-&utmje=0&utmfl=-&utmdt=-&utmhn=' + utmhn + '&utmr=' + referer + '&utmp=' + utmp + '&utmac=' + utmac + '&utmcc=__utma%3D' + cookie + '.' + random + '.' + today + '.' + today + '.' + today + '.2%3B%2B__utmb%3D' + cookie + '%3B%2B__utmc%3D' + cookie + '%3B%2B__utmz%3D' + cookie + '.' + today + '.2.2.utmccn%3D(direct)%7Cutmcsr%3D(direct)%7Cutmcmd%3D(none)%3B%2B__utmv%3D' + cookie + '.' + uservar + '%3B';
+      return document.body.appendChild(jQuerySG('<img />').attr('src', urchinUrl).get(0));
+    };
+    */
+
     return SelectorGadget;
 
   })();
- window.SelectorGadget = SelectorGadget
+
 }).call(this);
+}}

@@ -67,6 +67,7 @@
     "node-chrome": "^1.2.3",
     "remote": "^0.2.6",
     "url-parse": "^1.1.9",
+    "xlsx-writestream": "^0.4.0",
     "xml-writer": "^1.7.0",
     "xml2js": "^0.4.17"
   },

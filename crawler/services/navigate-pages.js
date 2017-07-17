@@ -1,7 +1,7 @@
 var urlsService = require(global.appRoot + '/scraper-engine/services/all-links')
-win = require(global.appRoot + '/crawler/services/browser-window')
+// win = require(global.appRoot + '/crawler/services/browser-window')
 
-var links = []
+const {BrowserWindow} = require('electron').remote
 
 global.getPage
 var Crawler = require("crawler")
@@ -9,8 +9,10 @@ var Crawler = require("crawler")
 var navResult =
     {
         navigatePages: function getPages(navUrls, cb) {
-            //  var link = {url : navUrls , visite }
+            //  let mainWindow = new BrowserWindow({width: 800, height: 600 })
 
+            //  var link = {url : navUrls , visite }
+var links = []
             console.log("crawler service begin")
             //define crawler
             var c = new Crawler({
@@ -29,7 +31,14 @@ var navResult =
                             //win.window(res.request.uri.href)       
                             var exist = false
                             var index = -1
-                            console.log('url: ' + res.request.uri.href)
+                          
+
+                        // mainWindow.loadURL(res.request.uri.href)
+                        
+//  mainWindow.webContents.on('did-finish-load', function() {
+//      console.log('finished '+ res.request.uri.href )
+//  }
+//  )
                             for (var j = 0; j < links.length; j++) {
                                 if (links[j].url == res.request.uri.href) {
 
@@ -42,10 +51,12 @@ var navResult =
                                 var link = { url: res.request.uri.href, visited: true }
                                 links.push(link)
                                 if (res.request.uri.href == navUrls) {
+                                    console.log('reach the url')
                                     var urlsCategoryService = require(global.appRoot + '/scraper-engine/services/categories-links')
                                     urlsCategoryService.Href(res, function (Categorylinks) {
+                                        console.log('correspoending '+Categorylinks.length)
                                         for (var i = 0; i < Categorylinks.length; i++) {
-
+                                         console.log('multi-level ' + Categorylinks[i])
                                             //   console.log("enque "+links[i].visited)
                                             c.queue(Categorylinks[i]);
                                             // links[i].visited = true;
@@ -80,7 +91,7 @@ var navResult =
                                 //console.log("links.leng "+links.length)
                                 for (var i = 0; i < links.length; i++) {
                                     if (links[i].visited == false) {
-                                        //   console.log("enque "+links[i].visited)
+                                         console.log("pagination "+links[i].url)
                                         c.queue(links[i].url);
                                         // links[i].visited = true;
                                     }
@@ -88,7 +99,7 @@ var navResult =
                                 global.finish =true
                                   for (var i = 0; i < links.length; i++) {
                                     if (links[i].visited == false) {
-                                        //   console.log("enque "+links[i].visited)
+                                        
                                        finish=false
                                         // links[i].visited = true;
                                     }

@@ -21,7 +21,7 @@ var res = {
 var writer = new XLSXWriter('mySpreadsheet.xlsx', {} /* options */);
 
 // After instantiation, you can grab the readstream at any time.
-writer.getReadStream().pipe(fs.createWriteStream('mySpreadsheet.xlsx'));
+// writer.getReadStream().pipe(fs.createWriteStream('mySpreadsheet.xlsx'));
 
 
 dataObj = []

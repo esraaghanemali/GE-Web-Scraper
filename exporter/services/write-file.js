@@ -3,7 +3,7 @@ var dialog = savefile.dialog
 var fs = require('fs')
 
 var result = {
-    write: function writeFun(content) {
+    write: function writeFun(type,content) {
         
         dialog.showSaveDialog((fileName) => {
             if (fileName === undefined) {
@@ -12,14 +12,47 @@ var result = {
             }
             
 
-           // fileName is a string that contains the path and filename created in the save file dialog.  
-            fs.writeFile(fileName, content, (err) => {
+if(type==3)
+{
+    try{
+content.pipe(fs.createWriteStream(fileName+'.csv'))
+         global.notification.show("Finished :)", "the file saved correctly ;)", 1)         
+
+    }catch(err)
+    {
+      global.notification.show("Error Writing File!", "somthing went wrong :(, "+err, 1)
+
+    }
+
+}  
+else 
+if(type==4)
+{
+    try{
+content.getReadStream().pipe(fs.createWriteStream(fileName+'.xlsx'));
+              global.notification.show("Finished :)", "the file saved correctly ;)", 1)         
+
+    }catch(err)
+    {
+      global.notification.show("Error Writing File!", "somthing went wrong :(, "+err, 1)
+
+    }
+} 
+else
+
+{
+  fs.writeFile(fileName, content, (err) => {
                 if (err) {
                        global.notification.show("Error Writing File!", "somthing went wrong :(, "+err.message, 1)
                   //  alert("An error ocurred creating the file " + err.message)
                 }
               global.notification.show("Finished :)", "the file saved correctly ;)", 1)         
             });
+}       
+ 
+
+
+
         });
     }
 }
